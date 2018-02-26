@@ -1,0 +1,34 @@
+﻿<Window x:Class="MaKro.Applications.CeYa.Client.Views.WelcomeForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaKro.Applications.CeYa.Client.Views"
+        xmlns:viewmodels="clr-namespace:MaKro.Applications.CeYa.Client.ViewModels"
+        xmlns:controls="clr-namespace:MaKro.Applications.CeYa.Client.Views.UserControls"
+        xmlns:colors="clr-namespace:MaKro.Applications.CeYa.Client.Views.UI"
+        mc:Ignorable="d"
+        Title="WelcomeForm" Height="1080" Width="1920"   WindowStyle="None" ResizeMode="NoResize"  
+    WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Window.Resources>
+        <viewmodels:WelcomeViewModel x:Key="WelcomeModelView"></viewmodels:WelcomeViewModel>
+        <colors:Color x:Key="ColorClass"></colors:Color>
+    </Window.Resources>
+    <Grid Background="{Binding Path=Window_Background_Main, Source={StaticResource ColorClass}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="{Binding Path=Window_Background_Top, Source={StaticResource ColorClass}}">
+            <Viewbox Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Center">
+                <TextBlock Foreground="{Binding Source={StaticResource ColorClass}, Path=Font_Foreground_Top}" Text="CeYa"></TextBlock>
+            </Viewbox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{Binding Path=Font_Foreground_Main, Source={StaticResource ColorClass}}" FontSize="60" FontStyle="Normal" Margin="0,0, 0,200">Welcome @ CeYa</Label>
+            <controls:BusyAnimation Visibility="{Binding Path=IsLoading,Source={StaticResource WelcomeModelView}}"></controls:BusyAnimation>
+        </Grid>
+        <Grid Grid.Row="2" Background="{Binding Path=Window_Background_Bottom, Source={StaticResource ColorClass}}"/>
+    </Grid>
+</Window>
