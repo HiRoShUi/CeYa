@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 namespace MaKro.Applications.CeYa.Client.Views
 {
     /// <summary>
-    /// Interaktionslogik für RegistrationForm.xaml
+    /// Interaktionslogik für LoginForm.xaml
     /// </summary>
-    public partial class RegistrationForm : Window
+    public partial class LoginForm : Window
     {
-        public RegistrationForm()
+        public LoginForm()
         {
             InitializeComponent();
         }
-
     }
 }

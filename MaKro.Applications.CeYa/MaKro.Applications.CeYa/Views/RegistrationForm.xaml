@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MaKro.Applications.CeYa.Client.Views"
-        xmlns:viewmodels="clr-namespace:MaKro.Applications.CeYa.Client.ViewModels"
         xmlns:controls="clr-namespace:MaKro.Applications.CeYa.Client.Views.UserControls"
         xmlns:colors="clr-namespace:MaKro.Applications.CeYa.Client.Views.UI"
+        xmlns:viewmodels="clr-namespace:MaKro.Applications.CeYa.Client.ViewModels"
         mc:Ignorable="d"
         Title="RegistrationForm" Height="1080" Width="1920"   WindowStyle="None" ResizeMode="NoResize"  
-    WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    WindowStartupLocation="CenterScreen" WindowState="Maximized" Name="Window">
     <Window.Resources>
         <colors:Color x:Key="ColorClass"></colors:Color>
+        <viewmodels:RegistrationViewModel x:Key="RegistrationViewModel"></viewmodels:RegistrationViewModel>
     </Window.Resources>
     <Grid Background="{Binding Source={StaticResource ColorClass}, Path=Window_Background_Main}">
         <Grid.RowDefinitions>
@@ -24,7 +25,161 @@
                 <TextBlock Foreground="{Binding Source={StaticResource ColorClass}, Path=Font_Foreground_Top}" Text="Registration"></TextBlock>
             </Viewbox>
         </Grid>
-        <Grid Grid.Row="2" Background="{Binding Path=Window_Background_Bottom, Source={StaticResource ColorClass}}"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="70*"/>
+                <RowDefinition Height="15*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="15*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="0" BorderBrush="{Binding Source={StaticResource ColorClass}, Path=Font_Foreground_Top}" Grid.Row="1" Grid.Column="1">
+                <Grid Name="RegistrationContentGrid" Background="{Binding Source={StaticResource ColorClass}, Path=Window_Background_Main}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0">
+                        <Label Name="LabelFirstname" Margin="10,0,0,0" Foreground="{Binding Source={StaticResource ColorClass}, Path=Font_Foreground_Main}">First Name</Label>
+                    </Viewbox>
+                    <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2">
+                        <Label Margin="10,0,0,0"  Foreground="{Binding Source={StaticResource ColorClass}, Path=Font_Foreground_Main}">Last Name</Label>
+                    </Viewbox>
+                    <Viewbox HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0">
+                        <Label Margin="10,0,0,0" Foreground="{Binding Source={StaticResource ColorClass}, Path=Font_Foreground_Main}">eMail</Label>
+                    </Viewbox>
+                    <Viewbox HorizontalAlignment="Left" Grid.Row="4" Grid.Column="0">
+                        <Label Margin="10,0,0,0"  Foreground="{Binding Source={StaticResource ColorClass}, Path=Font_Foreground_Main}">Company</Label>
+                    </Viewbox>
+                    <Viewbox HorizontalAlignment="Left" Grid.Row="6" Grid.Column="0">
+                        <Label Margin="10,0,0,0" Foreground="{Binding Source={StaticResource ColorClass}, Path=Font_Foreground_Main}">Contact person</Label>
+                    </Viewbox>
+                    <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="5">
+                        <Label Margin="10,0,0,0"  Foreground="{Binding Source={StaticResource ColorClass}, Path=Font_Foreground_Main}">Picture</Label>
+                    </Viewbox>
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="20*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Name="TextboxFirstname" Grid.Row="1" FontSize="30" Text="{Binding Source={StaticResource RegistrationViewModel}, Mode=TwoWay, Path=FirstName}"></TextBox>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="20*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Name="TextboxLastname" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Text="{Binding Source={StaticResource RegistrationViewModel}, Path=LastName, Mode=TwoWay}"></TextBox>
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="20*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Name="TextboxEmail" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Text="{Binding Source={StaticResource RegistrationViewModel}, Path=EMailAdress, Mode=TwoWay}"></TextBox>
+                    </Grid>
+                    <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="20*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Name="TextboxCompany" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Text="{Binding Source={StaticResource RegistrationViewModel}, Path=Company, Mode=TwoWay}"></TextBox>
+                    </Grid>
+                    <Grid Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="20*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Name="TextboxContact" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Text="{Binding Source={StaticResource RegistrationViewModel}, Path=Contact, Mode=TwoWay}"></TextBox>
+                    </Grid>
+                    <Border  Grid.Row="1" Grid.Column="4" Grid.RowSpan="4" BorderThickness="5" BorderBrush="{Binding Source={StaticResource ColorClass}, Path=Window_Background_Top}">
+                        <Button Background="{Binding Source={StaticResource ColorClass}, Path=Window_Background_Main}" Command="{Binding Source={StaticResource RegistrationViewModel}, Path=GetPictureCommand}">
+                            <Image Margin="50" Source="/Images/folder.png"/>
+                        </Button>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2" Background="{Binding Path=Window_Background_Bottom, Source={StaticResource ColorClass}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Border Margin="10" BorderThickness="5" BorderBrush="{Binding Source={StaticResource ColorClass}, Path=Window_Background_Main}">
+                <Button Command="{Binding Source={StaticResource RegistrationViewModel}, Path=BackCommand}">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="{Binding Source={StaticResource ColorClass}, Path=Window_Background_Bottom}"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding Source={StaticResource ColorClass}, Path=Window_Background_Main}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Viewbox>
+                        <Label Foreground="{Binding Source={StaticResource ColorClass}, Path=Font_Foreground_Top}">Back</Label>
+                    </Viewbox>
+                </Button>
+            </Border>
+            <Border Margin="10" BorderThickness="5" BorderBrush="{Binding Source={StaticResource ColorClass}, Path=Window_Background_Main}" Grid.Column="2">
+                <Button Command="{Binding Source={StaticResource RegistrationViewModel}, Path=RegisterCommand}" CommandParameter="{Binding ElementName=Window}">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="{Binding Source={StaticResource ColorClass}, Path=Window_Background_Bottom}"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding Source={StaticResource ColorClass}, Path=Window_Background_Main}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Viewbox>
+                        <Label Foreground="{Binding Source={StaticResource ColorClass}, Path=Font_Foreground_Top}">Register</Label>
+                    </Viewbox>
+                </Button>
+            </Border>
+        </Grid>
     </Grid>
         
 </Window>

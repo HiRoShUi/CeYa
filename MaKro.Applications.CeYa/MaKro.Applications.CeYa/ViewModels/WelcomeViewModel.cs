@@ -28,17 +28,17 @@ namespace MaKro.Applications.CeYa.Client.ViewModels
 
         private void LoadSettingsFromServer()
         {
-            //ToDo: Loading Algorithm
-            Thread.Sleep(5000);
+            //ToDo: Loading Algorithm (database?)
+            Thread.Sleep(2000);
             //When finished -> Loading_Visibility = hidden (not neccessary) and next window.
             IsLoading = Visibility.Hidden;
             Application.Current.Dispatcher.Invoke(() =>
             {
                 var window = Application.Current.MainWindow;
-                RegistrationForm regForm = new RegistrationForm();
-                Application.Current.MainWindow = regForm;
+                LoginForm logForm = new LoginForm();
+                Application.Current.MainWindow = logForm;              
+                logForm.Show();
                 window.Close();
-                regForm.ShowDialog();
             });
         }
 
